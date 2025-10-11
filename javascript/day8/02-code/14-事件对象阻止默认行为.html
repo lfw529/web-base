@@ -34,6 +34,12 @@
         a.addEventListener('click', function(e) {
                 e.preventDefault(); //  dom 标准写法
             })
+        
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+        })
+
             // 3. 传统的注册方式
         a.onclick = function(e) {
             // 普通浏览器 e.preventDefault();  方法
