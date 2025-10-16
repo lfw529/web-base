@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h3>{{ title }}</h3>
+    <p>{{ nickname.toUpperCase() }}</p>
+    <p>{{ age >= 18 ? '成年' : '未成年' }}</p>
+    <p>{{ obj.name }}</p>
+  </div>
+
+  <script src="./vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        title: 'hello vue',
+        nickname: 'lfw',
+        age: 18,
+        obj: {
+          name: 'xxx',
+          age: 22
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

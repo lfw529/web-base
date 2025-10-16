@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. 准备容器 -->
+  <div id="app">
+    {{ msg }}
+  </div>
+
+  <!-- 2. 引入Vue 开发版本 vue2 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  
+  <script>
+    // 一旦引入 VueJS 核心包，在全局环境，就有了 Vue 构造函数
+    // 3. 创建构造函数
+    const a = new Vue({
+      // 4. 指定配置项
+      // el: 挂在点
+      el: '#app',
+      // data: 数据内容
+      data: {
+        msg: 'hello vue'
+      }
+    })
+  </script>
+  
+</body>
+</html>
