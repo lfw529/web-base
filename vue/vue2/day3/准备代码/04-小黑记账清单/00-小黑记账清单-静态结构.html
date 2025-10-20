@@ -70,9 +70,9 @@
 
           <!-- 添加资产 -->
           <form class="my-form">
-            <input type="text" class="form-control" placeholder="消费名称" />
-            <input type="text" class="form-control" placeholder="消费价格" />
-            <button type="button" class="btn btn-primary">添加账单</button>
+            <input type="text" class="form-control" placeholder="消费名称" v-model.trim="name" />
+            <input type="text" class="form-control" placeholder="消费价格" v-model.number="price" />
+            <button type="button" class="btn btn-primary" @click="add">添加账单</button>
           </form>
 
           <table class="table table-hover">
@@ -85,22 +85,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>帽子</td>
-                <td>99.00</td>
-                <td><a href="javascript:;">删除</a></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>大衣</td>
-                <td class="red">199.00</td>
-                <td><a href="javascript:;">删除</a></td>
+              <tr v-for="(item, index) in list" :key="item.id">
+                <td>{{ index + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td :class="{ red: item.price > 500 }">{{ item.price.toFixed(2) }}</td>
+                <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
-                <td colspan="4">消费总计： 298.00</td>
+                <td colspan="4">消费总计： {{ totalPrice().toFixed(2) }}</td>
               </tr>
             </tfoot>
           </table>
@@ -127,7 +121,109 @@
       const app = new Vue({
         el: '#app',
         data: {
-          
+          list: [],
+          name: '',
+          price:''
+        },
+        computed: {
+          totalPrice () {
+            return this.list.reduce((pre, cur) => pre + cur.price, 0)
+          }
+        },
+        methods: {
+          async getList () {
+            const res = await axios.get('https://applet-base-api-t.itheima.net/bill', {
+              params: {
+                creator: '小黑'
+              }
+            })
+            this.list = res.data.data
+
+            // 更新图表
+            this.myChart.setOption({
+              // 数据项
+              series: [
+                {
+                  // data: [
+                  //   { value: 1048, name: '球鞋' },
+                  //   { value: 735, name: '防晒霜' }
+                  // ]
+                  data: this.list.map(item => ({ value: item.price, name: item.name}))
+                }
+              ]
+            })
+          },
+          async add() {
+            if(!this.name) {
+              alert('请输入消费名称')
+              return
+            }
+            if(typeof this.price !== 'number') {
+              alert('请输入正确的消费价格')
+              return
+            }
+
+            // 发送添加请求
+            const res = await axios.post('https://applet-base-api-t.itheima.net/bill', {
+              creator: '小黑',
+              name: this.name,
+              price: this.price
+            })
+
+            // 重新渲染
+            this.getList()
+
+            this.name = ''
+            this.price = ''
+          }
+        },
+        async del(id) {
+          // 发送删除请求
+          const res = await axios.delete(`https://applet-base-api-t.itheima.net/bill/${id}`)
+
+          // 重新渲染
+          this.getList()
+        },
+        created () {
+          this.getList()
+        },
+        mounted () {
+          this.myChart = echarts.init(document.querySelector('#main'))
+          this.myChart.setOption({
+            // 大标题
+            title: {
+              text: '消费账单列表',
+              left: 'center'
+            },
+            // 提示框
+            tooltip: {
+              trigger: 'item'
+            },
+            // 图例
+            legend: {
+              orient: 'vertical',
+              left: 'left'
+            },
+            // 数据项
+            series: [
+              {
+                name: '消费账单',
+                type: 'pie',
+                radius: '50%', // 半径
+                data: [
+                  // { value: 1048, name: '球鞋' },
+                  // { value: 735, name: '防晒霜' }
+                ],
+                emphasis: {
+                  itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+                }
+              }
+            ]
+          })
         },
       })
     </script>

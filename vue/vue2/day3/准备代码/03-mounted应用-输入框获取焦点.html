@@ -85,6 +85,12 @@
     el: '#app',
     data: {
       words: ''
+    },
+    mounted () {
+      //1. 获取收入元素
+      const inp = document.getElementById('inp')
+      //2. 调用 focus 方法
+      inp.focus()
     }
   })
 </script>
