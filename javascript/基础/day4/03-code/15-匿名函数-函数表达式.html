@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>匿名函数-函数表达式</title>
+</head>
+
+<body>
+  <script>
+    // 匿名函数 - 函数表达式
+    // 1. 函数表达式基本使用
+    // let fn = function () {
+    //   console.log('我是函数表达式')
+    // }
+    // fn()
+
+    // 2. 注意事项
+    // 2.1 其实函数也是一种数据类型,属于引用数据类型  数组  函数
+    // let num = 10
+
+    // 2.2 函数表达式必须先声明后使用
+    // fn()  // 不能在fn声明之前使用
+    // let fn = function () {
+    //   console.log('必须先声明后使用')
+    // }
+    // console.log(num)
+    // let num = 10
+
+    // 2.3 函数表达式可以传递参数还可以有返回值，使用方法和前面具名函数类似
+    let sum = function (x, y) {  // 形参
+      return x + y
+    }
+    let re = sum(1, 2)  // 实参
+    console.log(re)  // 3
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>封装函数求数组最大值</title>
+</head>
+
+<body>
+  <script>
+    // 封装函数，求任意数组中的最大值并返回这个最大值
+    // 1. 封装最大值函数，传递的参数是一个数组
+    function arrayMax(arr = []) {
+      // console.log(arr)
+      // arr = [1, 2, 3, 4, 5]
+      // 2. 函数内部把数组最大值求出来，并且返回 max
+      let max = arr[0]
+      for (let i = 0; i < arr.length; i++) {
+        if (max < arr[i]) {
+          max = arr[i]
+        }
+      }
+      return max
+    }
+    console.log(arrayMax([1, 2, 3, 4, 5]))
+    console.log(arrayMax([11, 23, 38, 4, 5]))
+    console.log(arrayMax())
+
+    let max = arrayMax([11, 23, 38, 4, 5])
+    console.log(max)
+    console.log(max)
+    // let age = prompt('请输入您的年龄：')
+  </script>
+</body>
+
+</html>

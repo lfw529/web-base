@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数整体感知</title>
+</head>
+
+<body>
+  <script>
+    // 函数整体感知
+    // 1. 求两个数的和，函数的写法
+    // function sum(x, y) {
+    //   return x + y
+    // }
+    // console.log(sum(10, 20))
+    // console.log(sum(1, 2))
+    // console.log(sum(44, 66)) 
+
+    // 2. 求n ~ m 之间的累加和  
+    function sum(x, y) {
+      let sum = 0
+      for (let i = x; i <= y; i++) {
+        sum += i
+      }
+      return sum
+    }
+    console.log(sum(1, 100))  // 求1~100之间的累加和
+    console.log(sum(1, 10))  // 求1~10之间的累加和
+  </script>
+</body>
+
+</html>

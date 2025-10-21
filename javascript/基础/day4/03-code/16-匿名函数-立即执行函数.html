@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>匿名函数-立即执行函数</title>
+</head>
+
+<body>
+  <script>
+    // 匿名函数 - 立即执行函数作用防止全局变量污染
+
+    // 方式1
+    // (匿名函数)()
+    // (function () {})()
+    // (function () {
+    //   console.log('我是立即执行函数')
+    // })()
+    // (function (x, y) {
+    //   console.log(x + y)
+    // })(1, 2)
+    (function () {
+      let num = 10
+    })(); // 不需要调用
+
+    // 注意： 如果有多个立即执行函数，则需要用分号隔开
+    (function () {
+      let num = 10
+    })();  // 不需要调用
+    // function fn() {
+    //   let num = 10
+    // }
+    // fn()  需要调用
+
+    // 方式2
+    // (匿名函数())
+    (function () {
+      console.log('我也是立即执行函数')
+    }());
+
+  </script>
+</body>
+
+</html>

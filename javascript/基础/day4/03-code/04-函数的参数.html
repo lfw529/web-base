@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数的参数</title>
+</head>
+
+<body>
+  <script>
+    // 函数的参数  形参和实参个数不匹配
+
+    // 1. 形参个数过多， 会自动补充 undefined 
+    function sum(x, y) {  // 形参 
+      return x + y
+    }
+    console.log(sum(1, 2))  // 实参   3
+    console.log(sum(1))  // 实参  NaN  x = 1  y 没有给值默认值是 undefined
+    //  1 + undefined  = NaN
+
+    // 2. 实参个数过多，则多余的实参会被忽略
+    console.log(sum(1, 2, 3)) // 实参 3
+
+    // 3. 开发中提倡要保证实参和形参个数统一
+  </script>
+</body>
+
+</html>
