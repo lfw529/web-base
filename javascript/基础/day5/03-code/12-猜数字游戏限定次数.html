@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜数字游戏限定次数</title>
+</head>
+
+<body>
+  <script>
+    // 代码改动要求:  限定用户输入三次，三次没猜对则提示用户次数用完
+
+    // 1. 利用random 随机生成一个 1 ~ 10 之间的一个随机整数
+    let random = Math.floor(Math.random() * (9 + 1)) + 1
+    console.log(random)
+
+    let flag = true // 开关变量
+    // 2. 循环三次
+    for (let i = 1; i <= 3; i++) {
+      // 3. 用户输入数字，利用多分支语句来判断，猜对了则退出循环，否则继续猜
+      let num = +prompt('请您输入1~10之间一个整数:')
+      if (num > random) {
+        alert('数字猜大了，继续猜')
+      } else if (num < random) {
+        alert('数字猜小了，继续猜')
+      } else {
+        // 如果猜对了，我就要把 flag 改为 false ，那么下面的 if语句就不执行了
+        flag = false // 这个flag要写到break上面否则不会执行
+        alert('恭喜你，猜对了，真厉害')
+        break  // 退出循环
+      }
+    }
+
+    // if (flag) {
+    //   alert('您的次数已经用完了')
+    // }
+
+    // 利用了逻辑中断
+    flag && alert('您的次数已经用完了')
+    // true && alert('您的次数已经用完了')  执行后面的alert代码
+    // false && alert('您的次数已经用完了')  不执行后面的alert代码
+
+  </script>
+</body>
+
+</html>

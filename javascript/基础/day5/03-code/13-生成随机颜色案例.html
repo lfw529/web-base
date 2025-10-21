@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生成随机颜色案例</title>
+</head>
+
+<body>
+  <script>
+    // 生成随机颜色案例
+    /*
+     1. 封装一个颜色函数 getRandomColor 
+     2. 返回rgb格式的颜色
+     3. 返回十六进制的颜色
+    */
+
+    // 1. 封装一个颜色函数 getRandomColor
+    function getRandomColor(flag = true) {
+      // 2. 如果实参是true或者不传递实参，则返回 #ffffff
+      if (flag) {
+        let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+        let str = '#'
+        // 2.1 利用random 生成 0~15之间的随机数 但是要随机6次，所以利用循环
+        for (let i = 1; i <= 6; i++) {
+          let random = Math.floor(Math.random() * 16)
+
+          // 2.2 利用生成的随机整数去数组里面找值，拼接到字符串里面最后返回
+          // console.log(arr[random])  4  2  e
+          str += arr[random]
+        }
+        return str
+      } else {
+        // 3. 如果实参是false 则返回的是rgb(255,255,255)
+        // 3.1 利用random随机生成3个 0 ~ 255 之间的整数
+        let r = Math.floor(Math.random() * 256)
+        let g = Math.floor(Math.random() * 256)
+        let b = Math.floor(Math.random() * 256)
+        // 3.2 利用模板字符串填充
+        return `rgb(${r}, ${g}, ${b})`
+      }
+    }
+
+    console.log(getRandomColor())  // 返回的是 #ffffff
+    console.log(getRandomColor(true))  // 返回的是 #ffffff
+    console.log(getRandomColor(false))  // 返回的是 #ffffff
+
+  </script>
+</body>
+
+</html>

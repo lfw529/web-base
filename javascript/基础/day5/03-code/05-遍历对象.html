@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历对象</title>
+</head>
+
+<body>
+  <script>
+    // 遍历对象
+    let pig = {
+      sex: '女',
+      age: 4,
+      uname: '佩奇',
+      weight: 12.6,
+
+    }
+
+    // for (let key in pig) {
+    //   console.log(key)  // key 是属性  
+    //   console.log(pig[key]) // 对象[变量] 是值
+    // }
+
+    for (let key in pig) {
+      console.log(key)  // key 是属性   对象.属性
+      // console.log(pig.key)   // pig.key  undefined  因为key是个变量不是属性
+      // key  'sex'  'age'    对象[key]  对象['sex']  对象['age']
+      console.log(pig[key])
+    }
+
+
+    // 注意：数组遍历用传统for， for in 主要用来遍历对象
+    let arr = ['red', 'green', 'pink']
+    for (let k in arr) {
+      console.log(k)// 得到字符串类型的索引号
+    }
+  </script>
+</body>
+
+</html>

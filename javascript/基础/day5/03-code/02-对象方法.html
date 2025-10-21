@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象方法</title>
+</head>
+
+<body>
+  <script>
+    // let fn = function() {}
+    // 对象方法
+    // 1. 定义对象方法
+    let pig = {
+      uname: '佩奇',
+      sing: function () {
+        console.log('唱歌')
+      },
+      dance: function () {
+        console.log('跳舞')
+      },
+      sum: function (x, y) {  // 2
+        // console.log(x + y)
+        return x + y
+      }
+    }
+    console.log(pig)
+
+    // 2. 调用对象方法
+    pig.sing() // 唱歌
+    pig.dance()  // 跳舞
+
+    // 3. 方法可以传递参数也可以有返回值，跟函数使用基本类似
+    let re = pig.sum(1, 2) // 1 实参
+    console.log(re)
+  </script>
+</body>
+
+</html>

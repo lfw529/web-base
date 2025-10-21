@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>查询属性的另外写法</title>
+</head>
+
+<body>
+  <script>
+    // 查询属性的另外写法  对象['属性'] 这个属性必须加引号
+    let pig = {
+      'pig-name': '佩奇',
+      age: 4
+    }
+    // console.log(pig.pig - name)  // NaN
+    console.log(pig['pig-name']) // 佩奇
+    console.log(pig['age']) // 4    === pig.age 
+  </script>
+</body>
+
+</html>
