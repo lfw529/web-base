@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJAX介绍及axios基本使用</title>
+</head>
+
+<body>
+  <p class="province">
+    <!-- 数据渲染到这里 -->
+  </p>
+  <button class="btn">渲染省份数据</button>
+  <!-- 
+      axios库地址: https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js
+      省份数据地址: http://hmajax.itheima.net/api/province
+      需求: 点击按钮 通过 axios 获取省份数据 并渲染
+     -->
+  <!-- 使用axios记得先导包 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.querySelector('.btn').addEventListener('click', () => {
+      // console.log('点了按钮')
+      // 通过 axios 获取省份数据 并渲染
+      // 1. 调用axios函数
+      axios({
+        url: 'http://hmajax.itheima.net/api/province'
+      }).then(res => {
+        // 2. 接收并使用数据
+        // console.log(res)
+        // res.data 可以获取服务器返回的数据
+        // console.log(res.data)
+        console.log(res.data.list)
+        document.querySelector('.province').innerText = res.data.list
+      })
+
+    })
+  </script>
+</body>
+
+</html>

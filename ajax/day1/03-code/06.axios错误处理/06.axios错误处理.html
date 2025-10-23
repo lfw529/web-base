@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn">注册用户</button>
+  <!-- 1. 导包 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- 
+    请求地址(url)：http://hmajax.itheima.net/api/register
+    注册用户
+    请求方法：POST
+    参数：username，password
+    说明：username 用户名（中英文和数字组成, 最少8位），password 密码（最少6位）
+    需求：点击按钮 通过axios提交用户数据，完成用户注册
+    错误处理：重复注册，通过弹框提示用户
+   -->
+  <script>
+    document.querySelector('.btn').addEventListener('click', function () {
+      // console.log('点了')
+      // 通过axios提交用户数据，完成用户注册
+      axios({
+        url: 'http://hmajax.itheima.net/api/register',
+        method: 'post',
+        data: {
+          username: 'itheima008',
+          password: '123456'
+        }
+      }).then(res => {
+        console.log(res.data)
+      })
+    })
+  </script>
+
+</body>
+
+</html>

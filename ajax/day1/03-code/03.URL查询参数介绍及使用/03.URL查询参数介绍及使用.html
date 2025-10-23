@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="btn">获取城市数据并渲染</button>
+  <!-- 1. 导包 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- 
+    城市数据:http://hmajax.itheima.net/api/city
+      获取某个省所有的城市
+      查询参数名:pname
+      说明:传递省份或直辖市名比如 北京、广东省…
+    需求: 点击按钮 通过axios 获取某个省的城市 并输出
+  -->
+  <script>
+    document.querySelector('.btn').addEventListener('click', function () {
+      // console.log('点了按钮哦')
+      // 通过axios 获取某个省的城市 并输出
+      axios({
+        // url: 'http://hmajax.itheima.net/api/city?pname=湖南省',
+        url: 'http://hmajax.itheima.net/api/city',
+        // 开发中 一般用params 不需要自己拼接字符串避免出错
+        params: {
+          pname: '湖北省'
+        }
+      }).then(res => {
+        console.log(res.data)
+      })
+    })
+  </script>
+
+</body>
+
+</html>

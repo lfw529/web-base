@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form-serialize</title>
+</head>
+
+<body>
+  <form action="javascript:;" class="example-form">
+    <input type="text" name="uname" />
+    <br>
+    <input type="text" name="pword" />
+    <br>
+    <input type="submit" class="submit" value="提交" />
+  </form>
+  <!-- 1. 导包 -->
+  <script src="./lib/form-serialize.js"></script>
+  <script>
+    /*
+      form-serialize 快速收集表单的值
+      1. 表单元素需要设置name属性，会成为对象的属性名
+      2. name属性设置的值和接口文档一致即可
+      3. hash 设置生成的数据格式
+        - true：js对象（常用）
+        - false：查询字符串
+      4. empty 是否收集空数据
+        - true：收集空数据，保证格式和表单一致（推荐用法）
+        - false：不收集空数据，格式和表单不一定一致（不推荐）
+    */
+    document.querySelector('.submit').addEventListener('click', () => {
+      // console.log('点了按钮')
+      const form = document.querySelector('.example-form')
+      // 参数1 form表单，要取值的表单元素需要在form表单中
+      // 参数2 插件的设置，{}
+      const data = serialize(form, { hash: true, empty: true })
+      // const data = serialize(form, { hash: false, empty: true })
+      // const data = serialize(form, { hash: true, empty: false })
+      console.log(data)
+    })
+  </script>
+</body>
+
+</html>
