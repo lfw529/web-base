@@ -5,37 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数组核心方法</title>
+  <title>数组reduce方法</title>
 </head>
 
 <body>
   <script>
-    const arr = [1, 5, 8]
-    // map 方法
-    // arr.map(function(当前值, 索引){})
-    const newArr1 = arr.map(function (item, index) {
-      return item * 2
-    })
-    console.log(newArr1) // [2, 10, 16]
-
-    // filter 方法
-    // arr.filter(function(当前值, 索引){})
-    const newArr2 = arr.filter(function (item, index) {
-      return item > 5
-    })
-    console.log(newArr2) // [8]
-
-    // forEach 方法
-    // arr.forEach(function(当前值, 索引){})
-    arr.forEach(function (item, index) {
-      console.log(item, index)
-      // 1 0
-      // 5 1
-      // 8 2
-    })
-
     // 数组reduce方法
     // arr.reduce(function(上一次值, 当前值){}, 初始值)
+    const arr = [1, 5, 8]
 
     // 1. 没有初始值 
     // const total = arr.reduce(function (prev, current) {
