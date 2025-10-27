@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- file标签 -->
+  <input type="file" class="upload">
+
+  <!-- 渲染服务器返回的图片URL -->
+  <img src="" class="img" alt="">
+
+  <!-- 导入axios -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+  <script>
+    /**
+     * 图片上传
+     * 1. 选择图片
+     * 2. FormData对象
+     * 3. 调用上传接口
+     * */
+    document.querySelector('.upload').addEventListener('change', function () {
+      // console.log(this)
+      // 1. 选择图片
+      // console.log(this.files)
+      console.log(this.files[0])
+
+      // 2. FormData对象
+      const data = new FormData()
+      // 参数1 接口文档要求的参数名
+      // 参数2 提交给服务器的数据（常用的是文件）
+      data.append('img', this.files[0])
+
+      // 3. 调用上传接口
+      axios({
+        url: 'http://hmajax.itheima.net/api/uploadimg',
+        method: 'POST',
+        data// data:data
+      }).then(res => {
+        // console.log(res)
+        const url = res.data.data.url
+        console.log(url)
+        document.querySelector('.img').src = url
+      })
+
+    })
+
+
+  </script>
+</body>
+
+</html>
