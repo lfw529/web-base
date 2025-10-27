@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XMLHttpRequest-数据提交</title>
+</head>
+
+<body>
+  <h2>XMLHttpRequest-数据提交</h2>
+  <button class="btn">点击注册</button>
+  <script>
+
+    /**
+     * 需求：使用xhr进行数据提交-完成注册功能
+    */
+    document.querySelector('.btn').addEventListener('click', () => {
+      // 1. 实例化XHR对象
+      const xhr = new XMLHttpRequest()
+      // 2. 设置请求方法和地址
+      xhr.open('POST', 'http://hmajax.itheima.net/api/register')
+      // 3. 监听事件，接收并使用数据
+      xhr.addEventListener('loadend', () => {
+        console.log(xhr.response)
+      })
+
+      // 4. 设置请求头信息(根据接口文档设置Content-Type)
+      xhr.setRequestHeader('Content-Type', 'application/json')
+
+      // 5. 请求体发送数据(和请求头设置的一致)
+      // 方案1: 自己写JSON
+      // 方案2: JS对象--》转为JSON(推荐!)-JSON.stringify
+      const obj = {
+        username: 'itheima999',
+        password: '123456'
+      }
+      const data = JSON.stringify(obj)
+      xhr.send(data)
+
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>封装-简易axios函数-获取地区列表</title>
+</head>
+
+<body>
+  <h2>封装-简易axios函数-获取地区列表</h2>
+  <div class="box"></div>
+  <script>
+    /**
+     * 封装-简易axios函数-获取地区列表
+    */
+    function hmAxios(config) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+        xhr.open(config.method || 'GET', config.url)
+        xhr.addEventListener('loadend', () => {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            resolve(JSON.parse(xhr.response))
+          } else {
+            reject(new Error(xhr.response))
+          }
+        })
+        xhr.send()
+      })
+    }
+
+    hmAxios({
+      url: '',
+      // method:'get'
+    }).then(res => {
+
+    })
+
+  </script>
+</body>
+
+</html>

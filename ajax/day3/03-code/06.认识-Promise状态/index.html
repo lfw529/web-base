@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>认识Promise状态</title>
+</head>
+
+<body>
+  <h2>Promise的状态</h2>
+  <script>
+    /**
+     * Promise的状态
+     *  1. pending 待定（默认状态）: 实例化
+     *  2. fulfilled 已兑现（成功）: resolve-》then
+     *  3. rejected 已拒绝（失败） : reject-》catch
+     * 
+     * Promise对象的状态发生改变之后，无法再次改变
+     * */
+    // 1. 实例化Promise对象 pending 待定（默认状态）
+    const p = new Promise((resolve, reject) => {
+      // 2. 执行异步操作，传递结果
+      setTimeout(() => {
+        // fulfilled 已兑现（成功）
+        // resolve('哈哈 成功啦')
+
+        // rejected 已拒绝（失败）
+        reject('嘤嘤嘤 失败啦')
+
+        // 状态改变之后，无法再次改变
+        resolve('nice 我又成功啦')
+      }, 1000);
+    })
+    //  3. 接收结果
+    p.then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+  </script>
+</body>
+
+</html>

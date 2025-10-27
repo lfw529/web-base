@@ -50,4 +50,3 @@ url && (document.body.style.backgroundImage = `url(${url})`)
 // && 优先级 = 要高 通过() 提升优先级
 // url && document.body.style.backgroundImage = `url(${url})`
 
-
