@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise.all 静态方法</title>
+</head>
+
+<body>
+  <h2>Promise.all 静态方法</h2>
+  <ul class="list"></ul>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.3/axios.js"></script>
+  <script>
+    /**
+     * 需求: 查询 北上广深 的天气，并在获取到所有结果之后，渲染到页面上
+     *  城市的code
+     *    北京: 110100
+     *    上海: 310100
+     *    广州: 440100
+     *    深圳: 440300
+     * */
+    // 1. 生成多个Promise对象
+    const p1 = axios({
+      url: 'http://hmajax.itheima.net/api/weather',
+      params: {
+        city: '110100'
+      }
+    })
+    const p2 = axios({
+      url: 'http://hmajax.itheima.net/api/weather',
+      params: {
+        city: '310100'
+      }
+    })
+    const p3 = axios({
+      url: 'http://hmajax.itheima.net/api/weather',
+      params: {
+        city: '440100'
+      }
+    })
+    const p4 = axios({
+      url: 'http://hmajax.itheima.net/api/weather',
+      // 故意改错的，测试用
+      // url: 'http://hmajax.itheima.net/api/weather123',
+      params: {
+        city: '440300'
+      }
+    })
+
+    // 2. Promise.all 获取所有的成功结果，或者失败原因（第一个）
+    const p = Promise.all([p1, p2, p3, p4])
+    // console.log(p)
+    p.then(res => {
+      // 获取所有Promise对象的成功结果 数组
+      console.log(res)
+      const html = res.map(v => {
+        const { area, weather } = v.data.data
+        // console.log(area, weather)
+        return `<li>${area} -- ${weather}</li>`
+      }).join('')
+      // console.log(html)
+      document.querySelector('.list').innerHTML = html
+    }).catch(err => {
+      // 第一个失败的Promise对象的原因
+      console.dir(err)
+    })
+
+  </script>
+</body>
+
+</html>

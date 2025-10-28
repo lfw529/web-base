@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>同步代码和异步代码</title>
+</head>
+
+<body>
+  <h2>同步代码和异步代码</h2>
+  <script>
+    /**
+     * 1. 同步代码
+     * */
+    console.log(1)
+    const num = 1 + 1
+    console.log(num)
+
+    /**
+     * 2. 同步+异步（定时器）
+     * */
+    console.log(1)
+    setTimeout(() => {
+      console.log(2)
+    }, 1000)
+    console.log(3)
+
+    /**
+     * 3. 同步+异步（事件）
+     * */
+    console.log(1)
+    document.body.addEventListener('click', () => {
+      console.log(2)
+    })
+    console.log(3)
+
+    /**
+     * 4. 同步+异步（XHR）
+     * */
+    console.log(1)
+    const xhr = new XMLHttpRequest()
+    xhr.open('get', 'url地址')
+    xhr.addEventListener('loadend', () => {
+      console.log(2)
+    })
+    xhr.send()
+    console.log(3)
+  </script>
+</body>
+
+</html>

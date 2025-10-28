@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async函数和await</title>
+</head>
+
+<body>
+  <h2>async函数和await</h2>
+  <form>
+    <span>省份：</span>
+    <select>
+      <option class="province"></option>
+    </select>
+    <span>城市：</span>
+    <select>
+      <option class="city"></option>
+    </select>
+    <span>地区：</span>
+    <select>
+      <option class="area"></option>
+    </select>
+  </form>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.3/axios.js"></script>
+  <script>
+    /**
+     * 需求: 展示数据到下拉框中（async和await）
+     *  1. 获取省份数据并展示第1个省
+     *  2. 获取第1个省的城市数据,并展示第1个城市
+     *  3. 获取第1个城市的区数据，并展示第1个区
+     * */
+    //  注意点1: 使用async关键字来声明函数
+    async function func() {
+      // 1. 获取省份数据并展示第1个省
+      // 注意点2: 使用await关键字 替代then，等待获取Promise对象的成功结果
+      const res1 = await axios({
+        url: 'http://hmajax.itheima.net/api/province'
+      })
+      // console.log(res1)
+      const pname = res1.data.list[0]
+      document.querySelector('.province').innerText = pname
+
+      // 2. 获取第1个省的城市数据,并展示第1个城市
+      const res2 = await axios({
+        url: 'http://hmajax.itheima.net/api/city',
+        params: {
+          pname
+        }
+      })
+      // console.log(res2)
+      const cname = res2.data.list[0]
+      document.querySelector('.city').innerText = cname
+
+      // 3. 获取第1个城市的区数据，并展示第1个区
+      const res3 = await axios({
+        // 不写await关键字 获取到的就是Promise对象（注意)
+        // const res3 = axios({
+        url: 'http://hmajax.itheima.net/api/area',
+        params: {
+          pname, cname
+        }
+      })
+      console.log(res3)
+      const aname = res3.data.list[0]
+      document.querySelector('.area').innerText = aname
+    }
+    func()
+
+
+  </script>
+</body>
+
+</html>

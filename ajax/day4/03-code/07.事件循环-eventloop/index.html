@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>事件循环-eventloop</h2>
+  <script>
+    //  同步+0延迟异步
+    console.log(4)
+    setTimeout(() => {
+      console.log(5)
+    }, 0)
+    console.log(6)
+
+  </script>
+</body>
+
+</html>

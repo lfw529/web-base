@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async函数和await-错误捕获</title>
+</head>
+
+<body>
+  <h2>async函数和await-错误捕获</h2>
+  <form>
+    <span>省份：</span>
+    <select>
+      <option class="province"></option>
+    </select>
+    <span>城市：</span>
+    <select>
+      <option class="city"></option>
+    </select>
+    <span>地区：</span>
+    <select>
+      <option class="area"></option>
+    </select>
+  </form>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.3.3/axios.js"></script>
+  <script>
+
+    async function func() {
+      try {
+        // 1. 需要执行的代码
+        const res1 = await axios({
+          url: 'http://hmajax.itheima.net/api/province'
+        })
+        const pname = res1.data.list[0]
+        document.querySelector('.province').innerText = pname
+
+        const res2 = await axios({
+          // url: 'http://hmajax.itheima.net/api/city',
+          // 故意改错的，测试用
+          url: 'http://hmajax.itheima.net/api/city123',
+          params: {
+            pname
+          }
+        })
+        const cname = res2.data.list[0]
+        document.querySelector('.city').innerText = cname
+
+        const res3 = await axios({
+          url: 'http://hmajax.itheima.net/api/area',
+          params: {
+            pname, cname
+          }
+        })
+        const aname = res3.data.list[0]
+        document.querySelector('.area').innerText = aname
+      } catch (error) {
+        // 2. try中出错了需要执行的代码，通过error获取错误信息
+        console.dir(error)
+      }
+
+    }
+
+    func()
+
+
+  </script>
+</body>
+
+</html>
