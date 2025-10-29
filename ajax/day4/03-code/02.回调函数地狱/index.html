@@ -53,9 +53,9 @@
             document.querySelector('.city').innerText = cname
             // 3. 获取第1个城市的区数据，并展示第1个区
             axios({
-              // url: 'http://hmajax.itheima.net/api/area',
+              url: 'http://hmajax.itheima.net/api/area',
               // 故意改错的地址，测试用
-              url: 'http://hmajax.itheima.net/api/area123',
+              // url: 'http://hmajax.itheima.net/api/area123',
               params: {
                 pname, cname
               }
@@ -71,9 +71,6 @@
       }).catch(err => {
         console.dir(err)
       })
-
   </script>
-
 </body>
-
 </html>

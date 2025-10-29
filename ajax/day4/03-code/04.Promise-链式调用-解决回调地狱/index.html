@@ -39,7 +39,7 @@
       url: 'http://hmajax.itheima.net/api/province'
     })
       .then(res => {
-        // console.log(res)
+         console.log(res)
         // 3.2 pname保存第一个省的数据
         pname = res.data.list[0]
         document.querySelector('.province').innerText = pname
@@ -67,10 +67,6 @@
         const aname = res.data.list[0]
         document.querySelector('.area').innerText = aname
       })
-
-
   </script>
-
 </body>
-
 </html>
