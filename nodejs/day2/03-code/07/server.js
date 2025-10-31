@@ -13,4 +13,4 @@ console.log(nowDateStr)
 
 // 求数组里最大值
 const _ = require('lodash')
-console.log(_.max([1, 10, 2, 3, 4, 55]))
+console.log(_.max([1, 10, 2, 3, 100, 55]))
