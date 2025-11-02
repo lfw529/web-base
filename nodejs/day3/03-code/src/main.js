@@ -2,7 +2,7 @@
  * 目标：引入工具函数使用
  */
 import { checkUserName, checkPassWord } from '@/utils/check.js'
-const unameResult = checkUserName('itheima007')
+const unameResult = checkUserName('lfw12345')
 const pwdResult = checkPassWord('7654321')
 console.log(unameResult, pwdResult)
 
