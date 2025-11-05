@@ -1,0 +1,25 @@
+<template>
+  <div>
+    <BaseSelect :value="selectId" @input="selectId = $event"></BaseSelect>
+  </div>
+</template>
+
+<script>
+import BaseSelect from './components/BaseSelect.vue'
+
+export default {
+  data() {
+    return {
+      selectId: '102',
+    }
+  },
+  components: {
+    BaseSelect,
+  },
+}
+      
+
+</script>
+
+<style>
+</style>
