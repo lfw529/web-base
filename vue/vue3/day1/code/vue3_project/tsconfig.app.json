@@ -1,0 +1,12 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "../../../day2/code/vue3_project/src/components/Child.vue", "../../../day2/code/vue3_project/src/components/Father.vue", "../../../day2/code/vue3_project/src/components/Parent.vue", "../../../day2/code/vue3_project/src/components/Person.vue", "../../../day2/code/vue3_project/src/components/Son.vue"],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
